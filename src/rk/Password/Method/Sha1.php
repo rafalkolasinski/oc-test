@@ -1,9 +1,9 @@
 <?php
     namespace rk\Password\Method;
 
-    use rk\Password\EncodeFunc;
+    use Jkan\Component\Password\EncodingMethod;
 
-    class Sha1 implements EncodeFunc{
+    class Sha1 implements EncodingMethod{
 
         public function encode($plainText){
             return sha1($plainText);
