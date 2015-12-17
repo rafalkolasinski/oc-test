@@ -4,13 +4,13 @@ namespace Tests;
 
 use Jkan\Component\Password\Encoder;
 use Jkan\Component\Password\Method\Md5Encoding;
+use rk\Password\Sha1Encoder;
+use rk\Password\Method\Sha1;
 
-class EncodingMethodTest extends \PHPUnit_Framework_TestCase
-{
+class EncodingMethodTest extends \PHPUnit_Framework_TestCase{
     const PASSWORD = 'JakubKanclerz';
 
-    public function testMd5Encoding()
-    {
+    public function testMd5Encoding(){
         $method = new Md5Encoding();
         $encoder = new Encoder($method);
 
@@ -20,15 +20,13 @@ class EncodingMethodTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testSha1Encoding()
-    {
-        //
-        // encoder should be initialized properly HERE
-        //
+    public function testSha1Encoding(){
+        $encodeFunc = new Sha1();
+        $encoder = new Sha1Encoder($encodeFunc);
 
         $this->assertEquals(
             '2181b2633e7ae8c3e964317dbd591eee51ab7a6d',
-            $encoder->encodePassword(self::PASSWORD)
+            $encoder->sha1Encode(self::PASSWORD)
         );
     }
 }
